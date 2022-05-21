@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tab!{% endblock %}
+
+{% block body %}
+
+    <div class="container text-primary mt-3">
+        <h1>Bonjour! vous êtes sur la page Tab</h1>
+    </div>
+    <div class="py-5 container">
+        <table class="table">
+            {% for note in notes %}
+            <tr>
+                <td>{{ note }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="alert alert-info">
+            <p>Nombre de notes : {{ notes | length }}</p>
+            <p>Note minimale : {{ min(notes) }}</p>
+            <p>Note maximale : {{ max(notes) }}</p>
+
+        </div>
+
+    </div>
+{% endblock %}
+

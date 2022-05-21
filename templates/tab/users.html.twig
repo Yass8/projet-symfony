@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tab!{% endblock %}
+
+{% block body %}
+
+    <div class="container text-primary mt-3">
+        <h1>Bonjour! vous êtes sur la page des utilisateurs</h1>
+    </div>
+    <div class="py-5 container">
+        <table class="table">
+            <thead>
+            <tr class="table-active">
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            {# odd si index de la boucle est impair | even si pair #}
+            {% for user in users %}
+                <tr class="table-{% if loop.index is odd %}info{% else %}primary{% endif %}">
+                    <td>{{ user.firstname | capitalize }}</td>
+                    <td>{{ user.lastname | capitalize }}</td>
+                    <td>{{ user.age }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
+

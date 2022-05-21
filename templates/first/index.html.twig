@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+
+    <div class="container text-info mt-3">
+        <h1>Bonjour! vous êtes sur la page des filtres de twig</h1>
+
+        <p><strong>Date : </strong> Aujourd'hui on est le {{ "now" | date("m/d/Y") }}</p>
+    <p><strong>Capitalize</strong> : C'est un {{ nom | capitalize }} {{ cap | capitalize }}</p>
+    </div>
+    <div class="container mt-5">
+        <div class="card">
+            <img src="{{ asset('assets/images/') ~ path | defaultImage }}" class="img-ronded">
+        </div>
+    </div>
+{% endblock %}
+
