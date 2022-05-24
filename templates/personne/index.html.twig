@@ -1,0 +1,68 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Liste des personnes{% endblock %}
+{% block pageTitle %}Liste des personnes{% endblock %}
+{% block body %}
+
+
+<div class="py-4 row">
+    {% for personne in personnes %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ personne.firstname }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ personne.firstname }} {{ personne.lastname }}</h6>
+            <p class="card-text">Age : {{ personne.age }}</p>
+            <a href="{{ path('personne.detail', {id:personne.id}) }}" class="card-link">Detail</a>
+            <a href="{{ path('person.delete', {id:personne.id}) }}" class="card-link">Supprimer</a>
+        </div>
+    </div>
+    {% endfor %}
+    {#
+    <table class="table table-responsive-sm mt-5">
+        <thead>
+        <tr class="table-danger">
+            <th>#</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Job</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+        <tr class="table-{% if loop.index is even %}warning{% else %}secondary{% endif %}">
+            <td>{{ personne.id }}</td>
+            <td>{{ personne.firstname }}</td>
+            <td>{{ personne.lastname }}</td>
+            <td>{{ personne.age }}</td>
+            <td>{{ personne.job }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    #}
+</div>
+    {% if isPaginated %}
+        <div class="row text-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if (pageActuelle != 1) %}
+                        <li class="page-item">
+                            <a class="page-link text-warning" href="{{ path('personne.all', {page:pageActuelle-1, nbre:nbre}) }}"><<</a>
+                        </li>
+                    {% endif %}
+                    {% for i in range(1, nbPage) %}
+                        <li class="page-item">
+                            <a class="page-link {% if loop.index == pageActuelle %}text-warning{% endif %}" href="{{ path('personne.all', {page:i, nbre:nbre}) }}">{{ i }}</a>
+                        </li>
+                    {% endfor %}
+                    {% if (nbPage != pageActuelle) %}
+                        <li class="page-item">
+                            <a class="page-link text-warning" href="{{ path('personne.all', {page:pageActuelle+1, nbre:nbre}) }}">>></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}{{ personne.firstname }} {{ personne.lastname }}{% endblock %}
+{% block pageTitle %}{{ personne.firstname }} {{ personne.lastname }}{% endblock %}
+
+{% block body %}
+{# {% include('fragment/date.html.twig') %} #}
+
+    <div class="py-5 container">
+        <div class="alert alert-success">
+            {{ personne.firstname }} {{ personne.lastname }} a {{ personne.age }} ans.
+        </div>
+    </div>
+{% endblock %}
+
